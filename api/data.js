@@ -92,13 +92,12 @@ const getData = async (state) => {
     const formatTable = (table) => {
         if (!table || !table[0]) return;
         const operators = table[0].slice(1);
-        console.log(operators)
         return table.slice(1).map((row) => {
             return {
                 title: row[0],
                 data: row.slice(1).map((ele, idx) => ({ 
                     x: operators[idx],
-                    y: ele 
+                    y: parseInt(ele.replace(/[$,]+/g,""))
                 }))
             }
         })
